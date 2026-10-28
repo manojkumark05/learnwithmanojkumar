@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio Build Prompt - Manojkumar K</title>
+<style>
+:root{--bg:#ffffff;--fg:#0f172a;--muted:#475569;--card:#f1f5f9;--bd:#cbd5e1;--ac:#1d4ed8}
+@media(prefers-color-scheme:dark){:root{--bg:#071433;--fg:#f8fafc;--muted:#9db2d6;--card:#0f2355;--bd:#2a4a8f;--ac:#60a5fa}}
+body{background:var(--bg);color:var(--fg);font:16px/1.65 Inter,system-ui,sans-serif;margin:0}
+main{max-width:860px;margin:0 auto;padding:32px 20px 80px}
+h1,h2,h3{line-height:1.25} h2{border-bottom:1px solid var(--bd);padding-bottom:6px;margin-top:2.2em;color:var(--ac)}
+code{background:var(--card);padding:1px 6px;border-radius:5px;font-family:JetBrains Mono,monospace;font-size:.9em}
+table{border-collapse:collapse;width:100%;display:block;overflow-x:auto} td,th{border:1px solid var(--bd);padding:8px 10px;text-align:left} th{background:var(--card)}
+a{color:var(--ac)} hr{border:0;border-top:1px solid var(--bd);margin:2em 0}
+button{background:var(--ac);color:#fff;border:0;border-radius:8px;padding:10px 16px;font-size:15px;cursor:pointer;position:sticky;top:12px;float:right}
+</style></head><body><main>
+<button id="copy" type="button">Copy full prompt</button>
+<h1>PROMPT: Build the Portfolio Website of Manojkumar K (Electronics Engineer)</h1>
+<p>You are a senior product designer and senior front-end engineer who builds award-quality developer portfolios. Build a complete, working, responsive, production-ready portfolio website for me. Do not give me a mockup, a design description, or a partial scaffold. Build the real site, run it, and fix every error before you hand it over.</p>
+<hr />
+<h2>0. ASSETS I AM PROVIDING</h2>
+<table>
+<thead>
+<tr>
+<th>Asset</th>
+<th>Path in project</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Portrait (square, 1254x1254, dark-blue shirt, deep-blue circuit-board background, skill labels already baked into the left side)</td>
+<td><code>/public/images/manojkumar-portrait.png</code></td>
+<td>Hero visual and social-share (OG) image</td>
+</tr>
+<tr>
+<td>Resume PDF</td>
+<td><code>/public/assets/Manojkumar_K_Resume.pdf</code></td>
+<td>Download and View actions</td>
+</tr>
+</tbody>
+</table>
+<p>If either file is missing at build time, show a clearly labelled placeholder and a visible "file missing" fallback. Never link to a fake or inaccessible file.</p>
+<hr />
+<h2>1. DESIGN REFERENCE AND DIRECTION</h2>
+<p>Reference: the Dribbble shot "Software Engineer Portfolio Landing Page" (https://dribbble.com/shots/26370831-Software-Engineer-Portfolio-Landing-Page). Use it as inspiration for layout rhythm, polish and hierarchy only. Do not copy its artwork, copy or assets.</p>
+<p>The look must be driven by my portrait, because it is the centrepiece:</p>
+<ul>
+<li><strong>Mood:</strong> premium, futuristic, semiconductor / chip-design. Deep navy to electric blue, with soft blue glow and thin circuit-trace line art. Clean and confident, not neon-heavy.</li>
+<li><strong>Palette (match to the portrait; adjust by eye if needed):</strong></li>
+<li>Background deepest: <code>#040A1C</code></li>
+<li>Background navy: <code>#071433</code></li>
+<li>Surface / card: <code>rgba(15, 35, 85, 0.45)</code> with a 1px border <code>rgba(96, 165, 250, 0.18)</code> and a subtle backdrop blur</li>
+<li>Royal blue: <code>#0F3FBF</code></li>
+<li>Electric blue (primary accent): <code>#2F80FF</code></li>
+<li>Cyan glow (secondary accent, use sparingly): <code>#38BDF8</code></li>
+<li>Text: <code>#F8FAFC</code>; muted text: <code>#9DB2D6</code></li>
+<li><strong>Type:</strong> Inter or Manrope for UI and headings; JetBrains Mono for labels, tags, dates and code snippets. Clear hierarchy: large, confident H1, comfortable body, small mono metadata.</li>
+<li><strong>Motifs:</strong> PCB traces that draw themselves on scroll, faint grid, small chip icons, glowing node dots, a gradient on one key word in each heading. Rounded cards (16-20px radius), generous spacing, smooth hover lift and glow.</li>
+<li><strong>Dark theme is the default.</strong> A light-theme toggle is optional; if you add it, every section must stay readable and contrast-compliant in both.</li>
+<li><strong>Avoid:</strong> stock photos, giant text, excessive neon, particle storms, anything that looks interactive but is not.</li>
+</ul>
+<hr />
+<h2>2. HERO (the most important screen)</h2>
+<p>Two columns on desktop, stacked on mobile (text first, then portrait).</p>
+<p><strong>Left column</strong>
+- Mono badge: <code>ELECTRONICS &amp; COMMUNICATION ENGINEERING</code>
+- H1: <code>Hi, I'm Manojkumar K.</code> (gradient on the name)
+- Headline: <code>Electronics Engineer | RTL Design &amp; Verification | VLSI | Embedded Systems</code> (a restrained typing or rotating effect on the discipline words is fine, with a static fallback for reduced motion)
+- Paragraph: "I am an enthusiastic Electronics and Communication Engineering graduate with a strong foundation in digital electronics, RTL design and verification, embedded systems, and microcontrollers. I enjoy developing engineering solutions through hardware description languages, FPGA implementation, sensor interfacing, and real-time systems. I am eager to apply my technical knowledge and project experience to challenging engineering opportunities."
+- Buttons: primary <code>Explore My Projects</code> (scrolls to Projects), secondary <code>Download Resume</code> (downloads the PDF as <code>Manojkumar_K_Resume.pdf</code>), text link <code>Connect on LinkedIn</code>
+- Location label with pin icon: <code>Coimbatore, Tamil Nadu, India</code>
+- Stats strip (factual only, no invented numbers): <code>8.27 CGPA</code> | <code>2 Internships</code> | <code>3 Projects</code> | <code>5 Certifications</code></p>
+<p><strong>Right column</strong>
+- Show my portrait in a large rounded frame with a soft blue outer glow that blends into the page background. The portrait already contains the circuit art and the skill labels (VLSI Design, Verilog HDL, FPGA, Embedded Systems, Digital Electronics). Do not duplicate those labels on top of it.
+- Add a few small live floating chips around the frame, outside the face area, such as <code>Verilog</code>, <code>FPGA</code>, <code>RTL</code>, <code>IoT</code>, with a slow float animation.
+- Extend the circuit traces from the portrait into the page background so the image feels part of the page, not pasted in.
+- Provide a single, obvious place to swap the portrait (one import in one config or data file). Write meaningful alt text: "Portrait of Manojkumar K, Electronics Engineer".</p>
+<p>Also: subtle animated background, and a scroll-down indicator that actually scrolls.</p>
+<hr />
+<h2>3. NAVIGATION</h2>
+<p>Sticky, compact, glass-blur navbar.
+- Left: "MK." monogram (minimal, engineering-inspired) plus <code>MANOJKUMAR K</code>.
+- Links: Home, About, Experience, Skills, Projects, Education, Certifications, Contact.
+- Right: prominent <code>Download Resume</code> button.
+- Smooth scroll, active-section highlighting (IntersectionObserver), <code>scroll-margin-top</code> so headings never hide under the navbar, mobile hamburger that closes after selection, full keyboard accessibility and visible focus rings.</p>
+<hr />
+<h2>4. SECTIONS, IN ORDER</h2>
+<p>Build all of these, each with a reveal-on-scroll animation (disabled under <code>prefers-reduced-motion</code>).</p>
+<ol>
+<li><strong>Home / Hero</strong> (section 2)</li>
+<li><strong>About Me</strong>: heading <code>About Me</code>, subtitle <code>Engineering ideas into practical solutions.</code> Use the About text in section 5. Four compact info cards with icons: Education, Technical Focus, Embedded Technologies, Career Goal.</li>
+<li><strong>Internship Experience</strong>: vertical timeline, reverse-chronological, two cards, tech tags, plus a <code>View Resume</code> action.</li>
+<li><strong>Technical Skills</strong>: five category cards with icons, using chips (never progress bars, because I have not supplied proficiency ratings).</li>
+<li><strong>Featured Projects</strong>: three project cards, each with a technical illustration, short summary, tech tags and a <code>View Details</code> button that opens a polished modal or dedicated route.</li>
+<li><strong>Education</strong>: academic timeline.</li>
+<li><strong>Certifications &amp; Continuous Learning</strong>: responsive card grid of five.</li>
+<li><strong>Areas of Interest</strong>: animated icon grid of eight topics.</li>
+<li><strong>My Resume</strong>: short text, <code>Download Resume</code> and <code>View Resume</code> (opens PDF in a new tab).</li>
+<li><strong>Let's Connect</strong>: contact info plus working contact form.</li>
+<li><strong>Footer</strong></li>
+</ol>
+<hr />
+<h2>5. CONTENT (use exactly; this is the source of truth)</h2>
+<h3>Personal</h3>
+<ul>
+<li>Name: Manojkumar K | Title: Electronics Engineer</li>
+<li>Email: beecemanojkumar@gmail.com | Phone: +91-7358644004</li>
+<li>Location: Perur, Coimbatore, Tamil Nadu, India</li>
+<li>LinkedIn: https://www.linkedin.com/in/manojkumar-k-34543b389</li>
+<li>Education: B.E. Electronics and Communication Engineering, Nehru Institute of Engineering and Technology, 2022-2026, CGPA 8.27</li>
+</ul>
+<h3>About text</h3>
+<p>"I am an Electronics and Communication Engineering graduate from Nehru Institute of Engineering and Technology, with a CGPA of 8.27. My technical interests include RTL design and verification, VLSI testing, FPGA-based digital systems, embedded systems, and IoT.</p>
+<p>Through my internships and academic projects, I have explored Verilog-based digital design, FPGA implementation, sensor interfacing, real-time monitoring, and system verification. I have worked on projects including an FPGA digital clock, an HDL-based temperature and humidity monitoring system, and a wireless rehabilitation monitoring prototype.</p>
+<p>I am a quick learner with analytical and problem-solving skills, a collaborative mindset, and a commitment to continuous learning. I am looking forward to contributing to engineering teams and developing reliable, efficient, and innovative hardware and embedded solutions."</p>
+<p>About cards:
+1. Education: B.E. Electronics and Communication Engineering
+2. Technical Focus: RTL Design, Verification, VLSI, FPGA
+3. Embedded Technologies: Microcontrollers, Sensor Interfacing, IoT
+4. Career Goal: Entry-level engineering opportunities</p>
+<h3>Experience</h3>
+<p><strong>1. RTL Design &amp; Verification Engineer (Intern)</strong>, Zepto Logic Technologies Private Limited, October 2025 - December 2025
+"Completed an internship focused on RTL design, verification, and FPGA development."
+- Utilized the Vivado design suite for FPGA development.
+- Worked on implementing digital clock functionality to improve timing precision in digital systems.
+- Contributed to FPGA configuration and implementation activities.
+- Conducted RTL design verification and testing against project specifications.
+- Developed an understanding of digital design workflows, simulation, timing control, and hardware implementation.
+Tags: Vivado, RTL Design, FPGA, Digital Electronics, Verification</p>
+<p><strong>2. Embedded System and Internet of Things (IoT) Intern</strong>, Pro Global Solution, June 2025 - July 2025
+"Participated in focused training and practical activities related to embedded systems and Internet of Things technologies."
+- Learned core embedded systems and IoT concepts.
+- Assisted in developing basic IoT prototypes using microcontrollers and sensors.
+- Explored IoT platforms and development tools.
+- Studied data collection, processing, and real-time monitoring techniques.
+Tags: Embedded Systems, Microcontrollers, Sensors, IoT, Arduino IDE</p>
+<h3>Skills (chips, grouped, with icons)</h3>
+<ul>
+<li><strong>RTL Design &amp; VLSI:</strong> RTL Design and Verification, VLSI Testing, Verilog, SystemVerilog, Digital Electronics, FPGA-Based Design</li>
+<li><strong>Embedded Systems &amp; IoT:</strong> Embedded Systems, Internet of Things, Microcontrollers, Sensor Interfacing, Real-Time Monitoring, Arduino-Based Prototyping</li>
+<li><strong>Programming Languages:</strong> Verilog / SystemVerilog, C, Python, Java</li>
+<li><strong>Tools &amp; Software:</strong> Xilinx Vivado, Questa, MATLAB / Simulink, Arduino IDE, Microsoft Office, Google Workspace</li>
+<li><strong>Professional Skills:</strong> Analytical Thinking, Problem Solving, Teamwork, Leadership, Continuous Learning</li>
+</ul>
+<h3>Projects</h3>
+<p>Subtitle: "Practical engineering projects combining digital design, embedded technologies, and real-time systems."</p>
+<p><strong>P1. Bone Rehabilitation Using Wireless CrissCross Flex Sensor with Vibrotactile Turning Indication</strong>
+Category: Embedded Systems | Sensor Interfacing | Wireless Monitoring
+"Developed a wireless bone rehabilitation monitoring prototype using a CrissCross Flex Sensor to measure limb bending during rehabilitation exercises. Integrated vibrotactile feedback to provide real-time movement and turning indications, supporting patient guidance and exercise accuracy."
+- Used a CrissCross Flex Sensor to measure limb bending.
+- Integrated vibrotactile feedback for movement indications.
+- Explored wireless data transmission for remote monitoring.
+- Designed the concept to reduce manual supervision and improve patient comfort during physiotherapy sessions.
+- Applied embedded systems, sensor interfacing, wireless communication, and real-time feedback concepts.
+Tags: Embedded Systems, Flex Sensor, Vibrotactile Feedback, Wireless Communication, Sensor Interfacing
+Illustration: wearable flex sensor, limb-bending concept, wireless link, vibrotactile unit. Never present it as a certified medical device or claim clinical results.</p>
+<p><strong>P2. DHT11 Temperature and Humidity Sensor with HDL-Based Design</strong>
+Category: FPGA | Verilog | Sensor Interfacing
+"Developed an HDL-based system to capture real-time room temperature and humidity data from a DHT11 sensor, process the sensor signals, and present the measured values through an FPGA output interface."
+- Developed HDL modules for sensor data capture and decoding.
+- Worked with Verilog/VHDL-based design concepts.
+- Implemented and tested sensor communication on an FPGA board.
+- Worked on timing control and stable sensor data acquisition.
+- Displayed temperature and humidity values through the FPGA output interface.
+- Documented the design and implementation workflow.
+Tags: DHT11, Verilog/VHDL, FPGA, Digital Logic, Sensor Interfacing
+Illustration: DHT11 connected to an FPGA board with a display. Any readings shown must be labelled "illustrative values".</p>
+<p><strong>P3. Implementation of Digital Clock on FPGA</strong>
+Category: RTL Design | Digital Systems | FPGA
+"Designed and implemented an FPGA-based digital clock using Verilog, incorporating hour, minute, and second counters, clock division, timing control, and real-time output display."
+- Developed hour, minute, and second counters.
+- Designed clock-divider logic to generate one-second timing pulses from the FPGA clock.
+- Created and tested the digital design using simulation and FPGA hardware.
+- Integrated seven-segment displays or LEDs for clock output.
+- Worked on RTL development, testbench creation, simulation results, and hardware validation.
+Tags: Verilog, FPGA, Vivado, RTL Design, Testbenches, Digital Logic
+Illustration: FPGA board, clock display, and a small block diagram (clock divider -&gt; counters -&gt; display driver).</p>
+<p><strong>Project detail view template (reusable):</strong> full description, problem statement, objective, system architecture, hardware and software components, design methodology, implementation workflow, my contributions, challenges and solutions, results and verification, skills demonstrated, diagram, and a <code>Back to Projects</code> button. For anything I have not documented (challenges, results, metrics), show a clearly marked "To be added" note instead of inventing content. No GitHub, demo-video or report links unless I supply them.</p>
+<h3>Education</h3>
+<ul>
+<li><strong>B.E., Electronics and Communication Engineering</strong>, Nehru Institute of Engineering and Technology, 2022-2026, CGPA 8.27</li>
+<li><strong>HSC</strong>, Government Higher Secondary School, 2022, 75.83%</li>
+<li><strong>SSLC</strong>, Government Higher Secondary School, 2020, 87.6%</li>
+</ul>
+<h3>Certifications (title | issuer)</h3>
+<ol>
+<li>Introduction to Internet of Things | NPTEL</li>
+<li>Chip Based VLSI Design for Industrial Applications | Coursera</li>
+<li>Python for Data Science, AI &amp; Development | EduSkills</li>
+<li>Introduction to Industry 4.0 and Industrial Internet of Things | NPTEL</li>
+<li>Embedded System Developer | EduSkills</li>
+</ol>
+<p>Each card: title, issuer, category, icon. Show <code>View Certificate</code> only if a real file or URL is supplied. No invented IDs, dates or URLs.</p>
+<h3>Areas of Interest (animated icon grid)</h3>
+<p>RTL Design and Verification | VLSI Design and Testing | FPGA Development | Digital System Design | Embedded Systems | Internet of Things | Sensor Interfacing | Hardware-Software Integration</p>
+<h3>Resume section</h3>
+<p>Heading <code>My Resume</code>. Text: "Explore my educational background, internship experience, technical skills, projects, and certifications in my resume." Buttons: <code>Download Resume</code>, <code>View Resume</code>.</p>
+<h3>Contact section</h3>
+<p>Heading <code>Let's Connect</code>. Headline: "Have an engineering opportunity or a project to discuss?" Text: "I am interested in entry-level opportunities in RTL design and verification, VLSI, FPGA development, embedded systems, and IoT. Feel free to reach out to discuss suitable opportunities or technical collaborations."
+- Clickable <code>mailto:</code>, <code>tel:</code> and LinkedIn links (LinkedIn opens in a new tab with <code>rel="noopener noreferrer"</code>).
+- Copy-email button with visible confirmation.
+- Form: Full Name, Email, Subject, Message, <code>Send Message</code>. Validate required fields and email format, accessible labels and error text, loading / success / error states, prevent double submission. Do not claim a message was sent unless a real service confirms it. Wire it to Formspree (or similar) through an environment variable (<code>VITE_FORM_ENDPOINT</code>); if it is not configured, fall back to a prefilled <code>mailto:</code> link and say so clearly in the UI. Never put secrets in client code.</p>
+<h3>Footer</h3>
+<p>"© {current year, dynamic} Manojkumar K. Built with curiosity and a passion for engineering." Links: Home, Projects, Resume, LinkedIn, Contact. Subtle back-to-top button.</p>
+<hr />
+<h2>6. HONESTY RULES (non-negotiable)</h2>
+<ul>
+<li>I am a recent graduate with two internships and three academic projects. Never call me senior or experienced, and never add responsibilities, awards, metrics, testimonials, ratings, honours or employment history that are not listed above.</li>
+<li>No fake repositories, certificate links, company logos, or performance numbers.</li>
+<li>No skill proficiency bars or percentages.</li>
+<li>Every visible button and link must do what it says. Remove decorative controls that do nothing.</li>
+</ul>
+<hr />
+<h2>7. TECHNICAL REQUIREMENTS</h2>
+<ul>
+<li><strong>Stack:</strong> React + TypeScript + Vite + Tailwind CSS + Lucide icons + Framer Motion (or lightweight CSS/IntersectionObserver animations). If the builder platform has a preferred stack, use that. No unnecessary dependencies.</li>
+<li><strong>Architecture:</strong> reusable components (<code>Navbar, Hero, About, Experience, Skills, Projects, ProjectDetails, Education, Certifications, Interests, Resume, Contact, Footer</code>); all content in typed data files (<code>data/profile.ts, experience.ts, skills.ts, projects.ts, education.ts, certifications.ts</code>); design tokens in one place (Tailwind theme / CSS variables).</li>
+<li><strong>Responsive:</strong> mobile-first, tested at 360, 768, 1024 and 1440 px; no horizontal overflow, no overlapping elements, touch targets of at least 44px.</li>
+<li><strong>Accessibility and SEO:</strong> semantic landmarks, logical headings, visible focus, AA contrast, <code>prefers-reduced-motion</code> respected. Title: <code>Manojkumar K | Electronics Engineer | RTL, VLSI &amp; Embedded Systems</code>; meta description; Open Graph / Twitter tags (use the portrait as the share image); MK favicon; <code>robots.txt</code> and <code>sitemap.xml</code>; JSON-LD <code>Person</code> schema using only the facts above.</li>
+<li><strong>Performance:</strong> optimise the portrait (serve WebP/AVIF plus fallback, set explicit width/height to avoid layout shift, preload it because it is above the fold), lazy-load everything else, keep animation lightweight.</li>
+<li><strong>Security:</strong> no keys in the frontend, <code>rel="noopener noreferrer"</code> on external links, validate all input.</li>
+</ul>
+<hr />
+<h2>8. FINAL QA (do this before you reply)</h2>
+<p>Confirm and report on each: all sections present; name, contact details, CGPA and internship dates exactly match section 5; three projects have working detail views; five certifications listed; resume View and Download work with the real PDF; every nav link scrolls and highlights correctly; contact links and copy-email work; form validation and fallback work; no mobile overflow; <code>npm run build</code> passes with no errors or warnings; no broken images or fake links; keyboard-only navigation works.</p>
+<h2>9. DELIVERABLES</h2>
+<ol>
+<li>The complete source code, running locally with <code>npm install &amp;&amp; npm run dev</code>.</li>
+<li>Short instructions to deploy (Vercel or Netlify) and to configure the form endpoint.</li>
+<li>A checklist of anything still needed from me (for example: resume PDF, project photos or diagrams, GitHub or report links, certificate files, real school names for HSC/SSLC, a transparent-background portrait if I want the circuit art and labels rendered live in code).</li>
+</ol>
+<p>Start building now. Prioritise accurate content, a polished hero, accessibility and working interactions over decorative effects.</p>
+</main>
+<script id="raw" type="text/plain"># PROMPT: Build the Portfolio Website of Manojkumar K (Electronics Engineer)
+
+You are a senior product designer and senior front-end engineer who builds award-quality developer portfolios. Build a complete, working, responsive, production-ready portfolio website for me. Do not give me a mockup, a design description, or a partial scaffold. Build the real site, run it, and fix every error before you hand it over.
+
+---
+
+## 0. ASSETS I AM PROVIDING
+
+| Asset | Path in project | Use |
+|---|---|---|
+| Portrait (square, 1254x1254, dark-blue shirt, deep-blue circuit-board background, skill labels already baked into the left side) | `/public/images/manojkumar-portrait.png` | Hero visual and social-share (OG) image |
+| Resume PDF | `/public/assets/Manojkumar_K_Resume.pdf` | Download and View actions |
+
+If either file is missing at build time, show a clearly labelled placeholder and a visible &quot;file missing&quot; fallback. Never link to a fake or inaccessible file.
+
+---
+
+## 1. DESIGN REFERENCE AND DIRECTION
+
+Reference: the Dribbble shot &quot;Software Engineer Portfolio Landing Page&quot; (https://dribbble.com/shots/26370831-Software-Engineer-Portfolio-Landing-Page). Use it as inspiration for layout rhythm, polish and hierarchy only. Do not copy its artwork, copy or assets.
+
+The look must be driven by my portrait, because it is the centrepiece:
+
+- **Mood:** premium, futuristic, semiconductor / chip-design. Deep navy to electric blue, with soft blue glow and thin circuit-trace line art. Clean and confident, not neon-heavy.
+- **Palette (match to the portrait; adjust by eye if needed):**
+  - Background deepest: `#040A1C`
+  - Background navy: `#071433`
+  - Surface / card: `rgba(15, 35, 85, 0.45)` with a 1px border `rgba(96, 165, 250, 0.18)` and a subtle backdrop blur
+  - Royal blue: `#0F3FBF`
+  - Electric blue (primary accent): `#2F80FF`
+  - Cyan glow (secondary accent, use sparingly): `#38BDF8`
+  - Text: `#F8FAFC`; muted text: `#9DB2D6`
+- **Type:** Inter or Manrope for UI and headings; JetBrains Mono for labels, tags, dates and code snippets. Clear hierarchy: large, confident H1, comfortable body, small mono metadata.
+- **Motifs:** PCB traces that draw themselves on scroll, faint grid, small chip icons, glowing node dots, a gradient on one key word in each heading. Rounded cards (16-20px radius), generous spacing, smooth hover lift and glow.
+- **Dark theme is the default.** A light-theme toggle is optional; if you add it, every section must stay readable and contrast-compliant in both.
+- **Avoid:** stock photos, giant text, excessive neon, particle storms, anything that looks interactive but is not.
+
+---
+
+## 2. HERO (the most important screen)
+
+Two columns on desktop, stacked on mobile (text first, then portrait).
+
+**Left column**
+- Mono badge: `ELECTRONICS &amp; COMMUNICATION ENGINEERING`
+- H1: `Hi, I&#x27;m Manojkumar K.` (gradient on the name)
+- Headline: `Electronics Engineer | RTL Design &amp; Verification | VLSI | Embedded Systems` (a restrained typing or rotating effect on the discipline words is fine, with a static fallback for reduced motion)
+- Paragraph: &quot;I am an enthusiastic Electronics and Communication Engineering graduate with a strong foundation in digital electronics, RTL design and verification, embedded systems, and microcontrollers. I enjoy developing engineering solutions through hardware description languages, FPGA implementation, sensor interfacing, and real-time systems. I am eager to apply my technical knowledge and project experience to challenging engineering opportunities.&quot;
+- Buttons: primary `Explore My Projects` (scrolls to Projects), secondary `Download Resume` (downloads the PDF as `Manojkumar_K_Resume.pdf`), text link `Connect on LinkedIn`
+- Location label with pin icon: `Coimbatore, Tamil Nadu, India`
+- Stats strip (factual only, no invented numbers): `8.27 CGPA` | `2 Internships` | `3 Projects` | `5 Certifications`
+
+**Right column**
+- Show my portrait in a large rounded frame with a soft blue outer glow that blends into the page background. The portrait already contains the circuit art and the skill labels (VLSI Design, Verilog HDL, FPGA, Embedded Systems, Digital Electronics). Do not duplicate those labels on top of it.
+- Add a few small live floating chips around the frame, outside the face area, such as `Verilog`, `FPGA`, `RTL`, `IoT`, with a slow float animation.
+- Extend the circuit traces from the portrait into the page background so the image feels part of the page, not pasted in.
+- Provide a single, obvious place to swap the portrait (one import in one config or data file). Write meaningful alt text: &quot;Portrait of Manojkumar K, Electronics Engineer&quot;.
+
+Also: subtle animated background, and a scroll-down indicator that actually scrolls.
+
+---
+
+## 3. NAVIGATION
+
+Sticky, compact, glass-blur navbar.
+- Left: &quot;MK.&quot; monogram (minimal, engineering-inspired) plus `MANOJKUMAR K`.
+- Links: Home, About, Experience, Skills, Projects, Education, Certifications, Contact.
+- Right: prominent `Download Resume` button.
+- Smooth scroll, active-section highlighting (IntersectionObserver), `scroll-margin-top` so headings never hide under the navbar, mobile hamburger that closes after selection, full keyboard accessibility and visible focus rings.
+
+---
+
+## 4. SECTIONS, IN ORDER
+
+Build all of these, each with a reveal-on-scroll animation (disabled under `prefers-reduced-motion`).
+
+1. **Home / Hero** (section 2)
+2. **About Me**: heading `About Me`, subtitle `Engineering ideas into practical solutions.` Use the About text in section 5. Four compact info cards with icons: Education, Technical Focus, Embedded Technologies, Career Goal.
+3. **Internship Experience**: vertical timeline, reverse-chronological, two cards, tech tags, plus a `View Resume` action.
+4. **Technical Skills**: five category cards with icons, using chips (never progress bars, because I have not supplied proficiency ratings).
+5. **Featured Projects**: three project cards, each with a technical illustration, short summary, tech tags and a `View Details` button that opens a polished modal or dedicated route.
+6. **Education**: academic timeline.
+7. **Certifications &amp; Continuous Learning**: responsive card grid of five.
+8. **Areas of Interest**: animated icon grid of eight topics.
+9. **My Resume**: short text, `Download Resume` and `View Resume` (opens PDF in a new tab).
+10. **Let&#x27;s Connect**: contact info plus working contact form.
+11. **Footer**
+
+---
+
+## 5. CONTENT (use exactly; this is the source of truth)
+
+### Personal
+- Name: Manojkumar K | Title: Electronics Engineer
+- Email: beecemanojkumar@gmail.com | Phone: +91-7358644004
+- Location: Perur, Coimbatore, Tamil Nadu, India
+- LinkedIn: https://www.linkedin.com/in/manojkumar-k-34543b389
+- Education: B.E. Electronics and Communication Engineering, Nehru Institute of Engineering and Technology, 2022-2026, CGPA 8.27
+
+### About text
+&quot;I am an Electronics and Communication Engineering graduate from Nehru Institute of Engineering and Technology, with a CGPA of 8.27. My technical interests include RTL design and verification, VLSI testing, FPGA-based digital systems, embedded systems, and IoT.
+
+Through my internships and academic projects, I have explored Verilog-based digital design, FPGA implementation, sensor interfacing, real-time monitoring, and system verification. I have worked on projects including an FPGA digital clock, an HDL-based temperature and humidity monitoring system, and a wireless rehabilitation monitoring prototype.
+
+I am a quick learner with analytical and problem-solving skills, a collaborative mindset, and a commitment to continuous learning. I am looking forward to contributing to engineering teams and developing reliable, efficient, and innovative hardware and embedded solutions.&quot;
+
+About cards:
+1. Education: B.E. Electronics and Communication Engineering
+2. Technical Focus: RTL Design, Verification, VLSI, FPGA
+3. Embedded Technologies: Microcontrollers, Sensor Interfacing, IoT
+4. Career Goal: Entry-level engineering opportunities
+
+### Experience
+**1. RTL Design &amp; Verification Engineer (Intern)**, Zepto Logic Technologies Private Limited, October 2025 - December 2025
+&quot;Completed an internship focused on RTL design, verification, and FPGA development.&quot;
+- Utilized the Vivado design suite for FPGA development.
+- Worked on implementing digital clock functionality to improve timing precision in digital systems.
+- Contributed to FPGA configuration and implementation activities.
+- Conducted RTL design verification and testing against project specifications.
+- Developed an understanding of digital design workflows, simulation, timing control, and hardware implementation.
+Tags: Vivado, RTL Design, FPGA, Digital Electronics, Verification
+
+**2. Embedded System and Internet of Things (IoT) Intern**, Pro Global Solution, June 2025 - July 2025
+&quot;Participated in focused training and practical activities related to embedded systems and Internet of Things technologies.&quot;
+- Learned core embedded systems and IoT concepts.
+- Assisted in developing basic IoT prototypes using microcontrollers and sensors.
+- Explored IoT platforms and development tools.
+- Studied data collection, processing, and real-time monitoring techniques.
+Tags: Embedded Systems, Microcontrollers, Sensors, IoT, Arduino IDE
+
+### Skills (chips, grouped, with icons)
+- **RTL Design &amp; VLSI:** RTL Design and Verification, VLSI Testing, Verilog, SystemVerilog, Digital Electronics, FPGA-Based Design
+- **Embedded Systems &amp; IoT:** Embedded Systems, Internet of Things, Microcontrollers, Sensor Interfacing, Real-Time Monitoring, Arduino-Based Prototyping
+- **Programming Languages:** Verilog / SystemVerilog, C, Python, Java
+- **Tools &amp; Software:** Xilinx Vivado, Questa, MATLAB / Simulink, Arduino IDE, Microsoft Office, Google Workspace
+- **Professional Skills:** Analytical Thinking, Problem Solving, Teamwork, Leadership, Continuous Learning
+
+### Projects
+Subtitle: &quot;Practical engineering projects combining digital design, embedded technologies, and real-time systems.&quot;
+
+**P1. Bone Rehabilitation Using Wireless CrissCross Flex Sensor with Vibrotactile Turning Indication**
+Category: Embedded Systems | Sensor Interfacing | Wireless Monitoring
+&quot;Developed a wireless bone rehabilitation monitoring prototype using a CrissCross Flex Sensor to measure limb bending during rehabilitation exercises. Integrated vibrotactile feedback to provide real-time movement and turning indications, supporting patient guidance and exercise accuracy.&quot;
+- Used a CrissCross Flex Sensor to measure limb bending.
+- Integrated vibrotactile feedback for movement indications.
+- Explored wireless data transmission for remote monitoring.
+- Designed the concept to reduce manual supervision and improve patient comfort during physiotherapy sessions.
+- Applied embedded systems, sensor interfacing, wireless communication, and real-time feedback concepts.
+Tags: Embedded Systems, Flex Sensor, Vibrotactile Feedback, Wireless Communication, Sensor Interfacing
+Illustration: wearable flex sensor, limb-bending concept, wireless link, vibrotactile unit. Never present it as a certified medical device or claim clinical results.
+
+**P2. DHT11 Temperature and Humidity Sensor with HDL-Based Design**
+Category: FPGA | Verilog | Sensor Interfacing
+&quot;Developed an HDL-based system to capture real-time room temperature and humidity data from a DHT11 sensor, process the sensor signals, and present the measured values through an FPGA output interface.&quot;
+- Developed HDL modules for sensor data capture and decoding.
+- Worked with Verilog/VHDL-based design concepts.
+- Implemented and tested sensor communication on an FPGA board.
+- Worked on timing control and stable sensor data acquisition.
+- Displayed temperature and humidity values through the FPGA output interface.
+- Documented the design and implementation workflow.
+Tags: DHT11, Verilog/VHDL, FPGA, Digital Logic, Sensor Interfacing
+Illustration: DHT11 connected to an FPGA board with a display. Any readings shown must be labelled &quot;illustrative values&quot;.
+
+**P3. Implementation of Digital Clock on FPGA**
+Category: RTL Design | Digital Systems | FPGA
+&quot;Designed and implemented an FPGA-based digital clock using Verilog, incorporating hour, minute, and second counters, clock division, timing control, and real-time output display.&quot;
+- Developed hour, minute, and second counters.
+- Designed clock-divider logic to generate one-second timing pulses from the FPGA clock.
+- Created and tested the digital design using simulation and FPGA hardware.
+- Integrated seven-segment displays or LEDs for clock output.
+- Worked on RTL development, testbench creation, simulation results, and hardware validation.
+Tags: Verilog, FPGA, Vivado, RTL Design, Testbenches, Digital Logic
+Illustration: FPGA board, clock display, and a small block diagram (clock divider -&gt; counters -&gt; display driver).
+
+**Project detail view template (reusable):** full description, problem statement, objective, system architecture, hardware and software components, design methodology, implementation workflow, my contributions, challenges and solutions, results and verification, skills demonstrated, diagram, and a `Back to Projects` button. For anything I have not documented (challenges, results, metrics), show a clearly marked &quot;To be added&quot; note instead of inventing content. No GitHub, demo-video or report links unless I supply them.
+
+### Education
+- **B.E., Electronics and Communication Engineering**, Nehru Institute of Engineering and Technology, 2022-2026, CGPA 8.27
+- **HSC**, Government Higher Secondary School, 2022, 75.83%
+- **SSLC**, Government Higher Secondary School, 2020, 87.6%
+
+### Certifications (title | issuer)
+1. Introduction to Internet of Things | NPTEL
+2. Chip Based VLSI Design for Industrial Applications | Coursera
+3. Python for Data Science, AI &amp; Development | EduSkills
+4. Introduction to Industry 4.0 and Industrial Internet of Things | NPTEL
+5. Embedded System Developer | EduSkills
+
+Each card: title, issuer, category, icon. Show `View Certificate` only if a real file or URL is supplied. No invented IDs, dates or URLs.
+
+### Areas of Interest (animated icon grid)
+RTL Design and Verification | VLSI Design and Testing | FPGA Development | Digital System Design | Embedded Systems | Internet of Things | Sensor Interfacing | Hardware-Software Integration
+
+### Resume section
+Heading `My Resume`. Text: &quot;Explore my educational background, internship experience, technical skills, projects, and certifications in my resume.&quot; Buttons: `Download Resume`, `View Resume`.
+
+### Contact section
+Heading `Let&#x27;s Connect`. Headline: &quot;Have an engineering opportunity or a project to discuss?&quot; Text: &quot;I am interested in entry-level opportunities in RTL design and verification, VLSI, FPGA development, embedded systems, and IoT. Feel free to reach out to discuss suitable opportunities or technical collaborations.&quot;
+- Clickable `mailto:`, `tel:` and LinkedIn links (LinkedIn opens in a new tab with `rel=&quot;noopener noreferrer&quot;`).
+- Copy-email button with visible confirmation.
+- Form: Full Name, Email, Subject, Message, `Send Message`. Validate required fields and email format, accessible labels and error text, loading / success / error states, prevent double submission. Do not claim a message was sent unless a real service confirms it. Wire it to Formspree (or similar) through an environment variable (`VITE_FORM_ENDPOINT`); if it is not configured, fall back to a prefilled `mailto:` link and say so clearly in the UI. Never put secrets in client code.
+
+### Footer
+&quot;© {current year, dynamic} Manojkumar K. Built with curiosity and a passion for engineering.&quot; Links: Home, Projects, Resume, LinkedIn, Contact. Subtle back-to-top button.
+
+---
+
+## 6. HONESTY RULES (non-negotiable)
+
+- I am a recent graduate with two internships and three academic projects. Never call me senior or experienced, and never add responsibilities, awards, metrics, testimonials, ratings, honours or employment history that are not listed above.
+- No fake repositories, certificate links, company logos, or performance numbers.
+- No skill proficiency bars or percentages.
+- Every visible button and link must do what it says. Remove decorative controls that do nothing.
+
+---
+
+## 7. TECHNICAL REQUIREMENTS
+
+- **Stack:** React + TypeScript + Vite + Tailwind CSS + Lucide icons + Framer Motion (or lightweight CSS/IntersectionObserver animations). If the builder platform has a preferred stack, use that. No unnecessary dependencies.
+- **Architecture:** reusable components (`Navbar, Hero, About, Experience, Skills, Projects, ProjectDetails, Education, Certifications, Interests, Resume, Contact, Footer`); all content in typed data files (`data/profile.ts, experience.ts, skills.ts, projects.ts, education.ts, certifications.ts`); design tokens in one place (Tailwind theme / CSS variables).
+- **Responsive:** mobile-first, tested at 360, 768, 1024 and 1440 px; no horizontal overflow, no overlapping elements, touch targets of at least 44px.
+- **Accessibility and SEO:** semantic landmarks, logical headings, visible focus, AA contrast, `prefers-reduced-motion` respected. Title: `Manojkumar K | Electronics Engineer | RTL, VLSI &amp; Embedded Systems`; meta description; Open Graph / Twitter tags (use the portrait as the share image); MK favicon; `robots.txt` and `sitemap.xml`; JSON-LD `Person` schema using only the facts above.
+- **Performance:** optimise the portrait (serve WebP/AVIF plus fallback, set explicit width/height to avoid layout shift, preload it because it is above the fold), lazy-load everything else, keep animation lightweight.
+- **Security:** no keys in the frontend, `rel=&quot;noopener noreferrer&quot;` on external links, validate all input.
+
+---
+
+## 8. FINAL QA (do this before you reply)
+
+Confirm and report on each: all sections present; name, contact details, CGPA and internship dates exactly match section 5; three projects have working detail views; five certifications listed; resume View and Download work with the real PDF; every nav link scrolls and highlights correctly; contact links and copy-email work; form validation and fallback work; no mobile overflow; `npm run build` passes with no errors or warnings; no broken images or fake links; keyboard-only navigation works.
+
+## 9. DELIVERABLES
+
+1. The complete source code, running locally with `npm install &amp;&amp; npm run dev`.
+2. Short instructions to deploy (Vercel or Netlify) and to configure the form endpoint.
+3. A checklist of anything still needed from me (for example: resume PDF, project photos or diagrams, GitHub or report links, certificate files, real school names for HSC/SSLC, a transparent-background portrait if I want the circuit art and labels rendered live in code).
+
+Start building now. Prioritise accurate content, a polished hero, accessibility and working interactions over decorative effects.
+</script>
+<script>
+document.getElementById('copy').addEventListener('click',async function(){
+ var t=document.getElementById('raw').textContent,b=this;
+ try{await navigator.clipboard.writeText(t);b.textContent='Copied!';}catch(e){b.textContent='Copy failed - select text manually';}
+ setTimeout(function(){b.textContent='Copy full prompt';},2000);
+});
+</script></body></html>
